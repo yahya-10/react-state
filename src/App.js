@@ -1,6 +1,5 @@
 import React , {useState} from 'react';
-// import './App.css';
-import image from './component/image.jpg'
+import Profile from './component/Profile'
 import {Switch} from 'antd';
 import './style.css';
 
@@ -8,25 +7,43 @@ class App extends React.Component {
 
   constructor() {
     super();
-    this.state = {
-      fullName: 'Yahya Akermi' , 
-      bio: 'Be yourself; everyone else is already taken.' , 
-      imgSrc: (image) , 
-      profession: 'web dev'
+    this.state = { 
+      isToggleOn: true
     }
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick=()=>{
+    this.setState(state =>({
+      isToggleOn: !state.isToggleOn
+    }))
+  }
+  
+  
+  componentDidMount() {
+    this.intervalID = setInterval(
+      ()=>this.tick(),
+      1000
+    );
+  }
+  componentWillUnmount(){
+    clearInterval(this.intervelID)
+  }
+  tick(){
+    this.setState({
+      time:new Date().toLocaleString()
+    });
   }
 
   render(){
     return (
       <div className="App">
-        <Switch />
+        <p className="App-clock">
+          {this.state.time}
+        </p>
         <span>Enable profile display</span>
-        <div>
-            <h1>{this.state.fullName}</h1>
-            <h3>{this.state.profession}</h3>
-            <img src={this.state.imgSrc} alt="" style={{height:"300px", width:"200px"}}/>
-            <h2>{this.state.bio}</h2>
-            </div>
+        <Switch onClick={this.handleClick}>
+          {this.state.isToggleOn ?  {Profile} : 'OFF'}
+        </Switch>
       </div>
     );
   }
