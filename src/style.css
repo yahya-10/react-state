@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#root{
+    text-align: center;
+    background: #f3904f; 
+    background: -webkit-linear-gradient(to right, #f3904f, #3b4371); 
+    background: linear-gradient(to right, #f3904f, #3b4371);
+    line-height: 500%;
+}
+span{
+    color: blue;
+}
+
+h1{
+    color: chartreuse;
+}
