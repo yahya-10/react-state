@@ -1,6 +1,6 @@
-import React , {useState} from 'react';
+import { Switch } from 'antd';
+import React from 'react';
 import Profile from './component/Profile'
-import {Switch} from 'antd';
 import './style.css';
 
 class App extends React.Component {
@@ -8,17 +8,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = { 
-      isToggleOn: true
+      isToggleOn: false
     }
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick=()=>{
     this.setState(state =>({
-      isToggleOn: !state.isToggleOn
-    }))
+      isToggleOn : !state.isToggleOn
+    }));
   }
-  
-  
   componentDidMount() {
     this.intervalID = setInterval(
       ()=>this.tick(),
@@ -41,9 +39,8 @@ class App extends React.Component {
           {this.state.time}
         </p>
         <span>Enable profile display</span>
-        <Switch onClick={this.handleClick}>
-          {this.state.isToggleOn ?  {Profile} : 'OFF'}
-        </Switch>
+        <Switch onClick={this.handleClick}> click button</Switch>
+        {this.state.isToggleOn ? <Profile /> : ""}
       </div>
     );
   }
