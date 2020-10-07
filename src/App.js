@@ -17,27 +17,10 @@ class App extends React.Component {
       isToggleOn : !state.isToggleOn
     }));
   }
-  componentDidMount() {
-    this.intervalID = setInterval(
-      ()=>this.tick(),
-      1000
-    );
-  }
-  componentWillUnmount(){
-    clearInterval(this.intervelID)
-  }
-  tick(){
-    this.setState({
-      time:new Date().toLocaleString()
-    });
-  }
-
   render(){
     return (
       <div className="App">
-        <p className="App-clock">
-          {this.state.time}
-        </p>
+        
         <span>Enable profile display</span>
         <Switch onClick={this.handleClick}> click button</Switch>
         {this.state.isToggleOn ? <Profile /> : ""}
